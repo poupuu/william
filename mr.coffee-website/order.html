@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Online | MR.COFFEE</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">MR<span>.</span>COFFEE</a>
+            </div>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="menu.html" class="nav-link">Menu</a></li>
+                    <li><a href="rewards.html" class="nav-link">Rewards</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="order.html" class="nav-link active">Order</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button class="btn-icon">
+                    <img src="images/icons/icon-user.png" alt="User" class="icon">
+                </button>
+                <button id="cart-icon" class="btn-icon">
+                    <img src="images/icons/icon-cart.png" alt="Cart" class="icon">
+                    <span id="cart-count" class="cart-count">0</span>
+                </button>
+                <button class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <div class="logo">
+                <a href="index.html">MR<span>.</span>COFFEE</a>
+            </div>
+            <button class="menu-close">
+                <img src="images/icons/icon-close.png" alt="Close" class="icon">
+            </button>
+        </div>
+        <nav class="mobile-nav">
+            <ul class="mobile-nav-list">
+                <li><a href="index.html" class="mobile-nav-link">Home</a></li>
+                <li><a href="menu.html" class="mobile-nav-link">Menu</a></li>
+                <li><a href="rewards.html" class="mobile-nav-link">Rewards</a></li>
+                <li><a href="about.html" class="mobile-nav-link">About</a></li>
+                <li><a href="order.html" class="mobile-nav-link">Order</a></li>
+            </ul>
+        </nav>
+        <div class="mobile-menu-footer">
+            <div class="social-links">
+                <a href="#" class="social-link"><img src="images/icons/icon-instagram.png" alt="Instagram" class="icon"></a>
+                <a href="#" class="social-link"><img src="images/icons/icon-facebook.png" alt="Facebook" class="icon"></a>
+                <a href="#" class="social-link"><img src="images/icons/icon-twitter.png" alt="Twitter" class="icon"></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div class="modal" id="cart-modal">
+        <div class="modal-content">
+            <button class="modal-close close-cart">
+                <img src="images/icons/icon-close.png" alt="Close" class="icon">
+            </button>
+            <div class="modal-body">
+                <h3>Your Cart</h3>
+                
+                <div class="cart-empty" id="cart-empty">
+                    <p>Your cart is empty. Add some delicious items!</p>
+                </div>
+                
+                <div class="cart-items" id="cart-items">
+                    <!-- Cart items will be added dynamically -->
+                </div>
+                
+                <div class="cart-total">
+                    <div class="total-row">
+                        <span>Total:</span>
+                        <span id="cart-total-price">$0.00</span>
+                    </div>
+                </div>
+                
+                <div class="cart-actions">
+                    <button id="clear-cart" class="btn btn-outline">Clear Cart</button>
+                    <button id="checkout-btn" class="btn btn-primary">Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Order Section -->
+        <section id="order" class="order-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Get It Delivered</span>
+                    <h2 class="section-title">Order Online</h2>
+                </div>
+                
+                <!-- Order Success Message -->
+                <div class="order-success" id="order-success">
+                    <div class="success-icon">
+                        <img src="images/icons/icon-check.png" alt="Check" class="icon">
+                    </div>
+                    <h2>Order Placed Successfully!</h2>
+                    <p>Thank you for your order. We've received your request and will prepare it with care.</p>
+                    <button class="btn btn-primary" id="place-another-order">Place Another Order</button>
+                </div>
+                
+                <!-- Order Form -->
+                <div class="order-container" id="order-form-container">
+                    <div class="order-grid">
+                        <div class="order-form-wrapper" data-aos="fade-right">
+                            <form id="order-form" class="order-form">
+                                <!-- Customer Information -->
+                                <div class="form-section">
+                                    <h3>Customer Information</h3>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="name">Full Name <span class="required">*</span></label>
+                                            <input type="text" id="name" name="name" class="form-control">
+                                            <span class="error-message" id="name-error"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">Email Address <span class="required">*</span></label>
+                                            <input type="text" id="email" name="email" class="form-control">
+                                            <span class="error-message" id="email-error"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label for="phone">Phone Number <span class="required">*</span></label>
+                                            <input type="text" id="phone" name="phone" class="form-control" placeholder="Numbers only">
+                                            <span class="error-message" id="phone-error"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="address">Delivery Address <span class="required">*</span></label>
+                                            <input type="text" id="address" name="address" class="form-control">
+                                            <span class="error-message" id="address-error"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+
+                                <!-- Order Details -->
+                                <div class="form-section">
+                                    <h3>Order Details</h3>
+                                    <div class="form-group">
+                                        <label for="product">Select Product <span class="required">*</span></label>
+                                        <select id="product" name="product" class="form-control">
+                                            <option value="">Select a product</option>
+                                            <!-- Options will be populated by JavaScript -->
+                                        </select>
+                                        <span class="error-message" id="product-error"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Size</label>
+                                        <div class="size-selector">
+                                            <div class="size-option">
+                                                <input type="radio" id="size-small" name="size" value="small">
+                                                <label for="size-small">Small</label>
+                                            </div>
+                                            <div class="size-option">
+                                                <input type="radio" id="size-medium" name="size" value="medium" checked>
+                                                <label for="size-medium">Medium</label>
+                                            </div>
+                                            <div class="size-option">
+                                                <input type="radio" id="size-large" name="size" value="large">
+                                                <label for="size-large">Large</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="quantity">Quantity <span class="required">*</span></label>
+                                        <div class="quantity-selector">
+                                            <button type="button" class="quantity-btn minus">
+                                                <img src="images/icons/icon-minus.png" alt="Minus" class="icon">
+                                            </button>
+                                            <input type="number" id="quantity" name="quantity" min="1" max="10" value="1" class="form-control">
+                                            <button type="button" class="quantity-btn plus">
+                                                <img src="images/icons/icon-plus.png" alt="Plus" class="icon">
+                                            </button>
+                                        </div>
+                                        <span class="error-message" id="quantity-error"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Add-ons</label>
+                                        <div class="addon-options">
+                                            <div class="addon-option">
+                                                <input type="checkbox" id="addon-extrashot" name="addons" value="extrashot" data-price="0.75">
+                                                <label for="addon-extrashot">Extra Espresso Shot (+$0.75)</label>
+                                            </div>
+                                            <div class="addon-option">
+                                                <input type="checkbox" id="addon-whip" name="addons" value="whip" data-price="0.50">
+                                                <label for="addon-whip">Whipped Cream (+$0.50)</label>
+                                            </div>
+                                            <div class="addon-option">
+                                                <input type="checkbox" id="addon-caramel" name="addons" value="caramel" data-price="0.50">
+                                                <label for="addon-caramel">Caramel Drizzle (+$0.50)</label>
+                                            </div>
+                                            <div class="addon-option">
+                                                <input type="checkbox" id="addon-almond" name="addons" value="almond" data-price="0.75">
+                                                <label for="addon-almond">Almond Milk (+$0.75)</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="special-instructions">Special Instructions</label>
+                                        <textarea id="special-instructions" name="special-instructions" class="form-control" placeholder="Any special requests or allergies we should know about?"></textarea>
+                                    </div>
+                                    
+                                    <button type="submit" class="btn btn-primary btn-block" id="place-order-btn">Place Order</button>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <div class="order-summary-wrapper" data-aos="fade-left">
+                            <div class="order-summary" id="order-summary">
+                                <h3>Order Summary</h3>
+                                
+                                <div class="empty-summary" id="empty-summary">
+                                    <div class="empty-icon">
+                                        <img src="images/icons/icon-mug.png" alt="Coffee Mug" class="icon">
+                                    </div>
+                                    <p>Select a product to see your order summary</p>
+                                </div>
+                                
+                                <div class="summary-details" id="summary-details">
+                                    <div class="product-summary">
+                                        <div class="product-image">
+                                            <img id="summary-image" src="images/product-1.jpg" alt="Product">
+                                        </div>
+                                        <div class="product-details">
+                                            <h4 id="summary-product-name">Selected Product</h4>
+                                            <p id="summary-product-size">Medium × 1</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="addons-summary" id="addons-summary">
+                                        <h4>Add-ons:</h4>
+                                        <ul id="addons-list">
+                                            <!-- Add-ons will be added dynamically -->
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="total-summary">
+                                        <div class="total-row">
+                                            <span>Total:</span>
+                                            <span id="total-price">$0.00</span>
+                                        </div>
+                                        <p class="total-note">Includes all add-ons and size adjustments</p>
+                                    </div>
+                                
+                                <!-- Cart Summary -->
+                                <div class="cart-summary" id="cart-summary" style="display: none;">
+                                    <h4>Cart Items</h4>
+                                    <ul id="cart-summary-list">
+                                        <!-- Cart items will be added dynamically -->
+                                    </ul>
+                                    <div class="total-row">
+                                        <span>Cart Total:</span>
+                                        <span id="cart-summary-total">$0.00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info">
+                    <div class="footer-logo">
+                        <a href="index.html">MR<span>.</span>COFFEE</a>
+                    </div>
+                    <p>Crafting moments of joy, one cup at a time.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><img src="images/icons/icon-instagram.png" alt="Instagram" class="icon"></a>
+                        <a href="#" class="social-link"><img src="images/icons/icon-facebook.png" alt="Facebook" class="icon"></a>
+                        <a href="#" class="social-link"><img src="images/icons/icon-twitter.png" alt="Twitter" class="icon"></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="rewards.html">Rewards</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="order.html">Order Online</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <address>
+                        <p><img src="images/icons/icon-location.png" alt="Location" class="icon"> 123 Coffee Street, Brew District</p>
+                        <p><img src="images/icons/icon-mobile.png" alt="Phone" class="icon"> (123) 456-7890</p>
+                        <p><img src="images/icons/icon-mail.png" alt="Email" class="icon"> hello@mrcoffee.com</p>
+                    </address>
+                </div>
+                
+                <div class="footer-hours">
+                    <h3>Opening Hours</h3>
+                    <ul class="hours-list">
+                        <li>
+                            <span>Monday - Friday</span>
+                            <span>7:00 AM - 8:00 PM</span>
+                        </li>
+                        <li>
+                            <span>Saturday</span>
+                            <span>8:00 AM - 9:00 PM</span>
+                        </li>
+                        <li>
+                            <span>Sunday</span>
+                            <span>8:00 AM - 6:00 PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> MR.COFFEE. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
