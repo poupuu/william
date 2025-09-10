@@ -45,7 +45,7 @@
   <a href="https://www.instagram.com/william26._/" target="_blank">
     <img src="https://raw.githubusercontent.com/maurodesouza/profile-readme-generator/master/src/assets/icons/social/instagram/default.svg" width="52" height="40" alt="instagram logo"  />
   </a>
-  <a href="https://www.linkedin.com/in/william-7387b4288/" target="_blank">
+  <a href="https://www.linkedin.com/in/williammss/" target="_blank">
     <img src="https://raw.githubusercontent.com/maurodesouza/profile-readme-generator/master/src/assets/icons/social/linkedin/default.svg" width="52" height="40" alt="linkedin logo"  />
   </a>
   <a href="https://mailto:williamanwar2@gmail.com" target="_blank">
