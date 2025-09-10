@@ -55,10 +55,7 @@
 
 ###
 
-<div align="center">
-  <a href="https://open.spotify.com/user/poupuu">
-    <img src="https://spotify-recently-played-readme.vercel.app/api?user=poupuu&count=1&unique=false" alt="Spotify recently played"  />
-  </a>
-</div>
+![Spotify recently played](https://spotify-recently-played-readme.vercel.app/api?user=31lgc2ls7mj32xm6iwhyqnooaub4)
+
 
 ###
